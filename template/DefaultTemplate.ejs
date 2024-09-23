@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Default Template</title>
+        <!--    fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Poppins, Arial, sans-serif;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            p {
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 20px;
+                letter-spacing: 0.15px;
+                color: #1c1b1f;
+            }
+            h5 {
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 30px;
+                letter-spacing: 0.3px;
+                color: #1c1b1f;
+            }
+            h6 {
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 28px;
+                letter-spacing: 0.15px;
+                color: #1c1b1f;
+            }
+            .secondary {
+                color: #006df5;
+            }
+            .success {
+                color: #008945;
+            }
+            .align_left {
+                text-align: left !important;
+            }
+            .main-content {
+                width: 100%;
+                height: max-content;
+                margin: auto;
+                transition: width 0.3s ease;
+                background-color: #ffffff;
+            }
+            .header-contents {
+                border-top: 8px solid #006df5;
+                padding: 32px;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            header p {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 22px;
+                letter-spacing: 0.15px;
+                color: #1c1b1f;
+            }
+            .logo_box {
+                            width: 210px;
+                            height: 80px;
+                        }
+                        .logo_box img {
+                            width: auto;
+                            max-width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+            .summery_heading {
+                display: flex;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                -webkit-box-pack: justify;
+                -webkit-justify-content: space-between;
+                justify-content: space-between;
+                -webkit-align-items: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                padding: 16px 32px;
+            }
+            .summery_heading h4 {
+                font-weight: 600;
+                font-size: 28px;
+                line-height: 40px;
+                letter-spacing: 0.25px;
+            }
+            .summery_heading h4,
+            .summery_heading p,
+            .summery_heading h6 {
+                color: #006df5;
+            }
+            .summery_content {
+                display: flex;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                width: 100%;
+                gap: 2px;
+                margin-top: 16px;
+            }
+            .summery {
+                display: flex;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                background: #949db21f;
+                padding: 24px 16px;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                -webkit-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+            }
+            .summery.second_box,
+            .summery.third_box {
+                 background-color: #006df514;
+            }
+            .summery.third_box {
+                 gap: 16px;
+            }
+            .summery.fourth_box {
+               background-color: #006df5;
+               gap: 16px;
+            }
+            .summery.fourth_box h6,
+            .summery.fourth_box p {
+                color: #ffffff;
+            }
+            footer {
+                padding: 32px;
+                margin-top: 16px;
+                border-top: 1px solid #949db21f;
+            }
+            .items_table {
+                width: 100%;
+                border-spacing: 0;
+            }
+            .items_table th,
+            .items_table td {
+                font-size: 14px;
+                line-height: 1.5rem;
+                letter-spacing: 0.15px;
+                display: table-cell;
+                vertical-align: inherit;
+                border-bottom: 1px solid #e0e0e0;
+                text-align: right;
+                padding: 16px;
+                color: #1c1b1f;
+            }
+            .items_table th{
+            font-weight: 600;
+            }
+            .total_table {
+                display: table;
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 50%;
+                margin-left: auto;
+                margin-right: 0;
+            }
+            .total_table th,
+            .total_table td {
+                padding: 4px 8px;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 1.5rem;
+                letter-spacing: 0.15px;
+                text-align: right;
+            }
+            .total_table th {
+                text-align: right;
+            }
+            .total_row {
+                border-top: 1px solid #949db21f;
+                border-bottom: 1px solid #949db21f;
+            }
+            .total_row .total_amount {
+                border-top: 1px solid #006df5;
+                border-bottom: 1px solid #006df5;
+                color: #006df5;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-content">
+            <header>
+                <div class="header-contents">
+                    <div class="logo_box">
+                         <% if (data.customLogoUrl) { %>
+                                <div class="logo_box"><img src="<%= data.customLogoUrl %>" alt="logo" /></div>
+                        <% } %>
+                    </div>
+                    <div style="text-align: right">
+                        <% if (contactInfo?.dataValues?.firstName) { %>
+                            <h6><%= contactInfo?.dataValues?.firstName + ' ' + contactInfo?.dataValues?.lastName %></h6>
+                        <% } %>
+                        <% if (contactInfo?.dataValues?.email) { %>
+                            <p style="margin-top:0">
+                                <a href="mailto: <%= contactInfo.dataValues.email  %>" style="text-decoration: none; color: inherit;"><%= contactInfo?.dataValues?.email  %></a>
+                                
+                            </p>
+                        <% } %>
+                        <% if (contactInfo?.dataValues?.number) { %>
+                            <p style="margin-top:0">
+                                <a href="tel: <%= contactInfo.dataValues.number  %>" style="text-decoration: none; color: inherit;"><%= contactInfo?.dataValues?.number  %></a>
+                            
+                            </p>
+                        <% } %>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="invoice_summery">
+                    <div class="summery_heading">
+                        <h4>Invoice</h4>
+                        <div style="text-align: right">
+                            <p>Balance due:</p>
+                            <h6>$<%= data.totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || 0 %></h6>
+                        </div>
+                    </div>
+
+                    <div class="summery_content">
+                        <% if (billTo.address) { %>
+                            <div class="summery first_box">
+                                <h6>BILL TO:</h6>
+                                 <p><%= billTo.address || '' %></p>
+                                        <% if (billTo.zip || billTo.city || billTo.state || billTo.country) { %>
+                                           <p>
+                                               <% if (billTo.city) { %>
+                                                   <%= `${billTo.city},` %>
+                                               <% } %>
+                                               <% if (billTo.state) { %>
+                                                   <%= `${billTo.state} ` %>
+                                               <% } %>
+                                               <% if (billTo.zip) { %>
+                                                   <%= `${billTo.zip}` %>
+                                               <% } %>
+                                           </p>
+                                           <p style="text-transform: capitalize;"><%= billTo.country || '' %></p>
+                                       <% } %>
+                            </div>
+                        <% } %>
+                        <% if (shippingTo.address) { %>
+                            <div class="summery second_box">
+                                <h6>SHIP TO:</h6>
+                                <p><%= shippingTo.address || '' %></p>
+                                 <% if (shippingTo.zip || shippingTo.city || shippingTo.state || shippingTo.country) { %>
+                                    <p>
+                                        <% if (shippingTo.city) { %>
+                                            <%= `${shippingTo.city},` %>
+                                        <% } %>
+                                        <% if (shippingTo.state) { %>
+                                            <%= `${shippingTo.state} ` %>
+                                        <% } %>
+                                        <% if (shippingTo.zip) { %>
+                                            <%= `${shippingTo.zip}` %>
+                                        <% } %>
+                                    </p>
+                                    <p style="text-transform: capitalize;"><%= shippingTo.country || '' %></p>
+                                <% } %>
+                            </div>
+                        <% } %>
+                        <div class="summery third_box">
+                            <div>
+                                <h6>Invoice Number:</h6>
+                                <p><%= data.invoiceNumber || '' %></p>
+                            </div>
+                            <div>
+                                <h6>Order Number:</h6>
+                                <p><%= contactData.orderNumber || '' %></p>
+                            </div>
+                        </div>
+                        <div class="summery fourth_box">
+                            <div>
+                                <h6>Invoice Date:</h6>
+                                <p> <%= data.invoiceDate || '' %></p>
+                            </div>
+                            <div>
+                                <h6>Due Date:</h6>
+                                <p><%= data.dueDate || '' %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <div style="padding-inline: 32px">
+            <table class="items_table">
+                <thead>
+
+                <tr>
+                    <th class="align_left" >Items & Description</th>
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <% let subTotal = 0; %>
+                <% let totalTax = 0; %>
+                <% let totalAmount = 0; %>
+                <% itemsData.forEach(function(item, index) { %>
+                <% subTotal += item.itemTotalPrice; %>
+                <% totalAmount = (item.itemQuantity * item.itemAmount) %>
+                <% totalTax = (totalAmount * item.itemTax) / 100; %>
+                <tr>
+                    <td class="align_left " >
+                        <span><%= item.itemName %> </span>
+                        <% if (item.itemDescription) { %>
+                        <p style="margin-top:0;color:#546376;"><%= item.itemDescription %></p>
+                        <% } %>
+                    </td>
+                    <td><%= clientCanSee.includes(clientCanSeeConstant.QUANTITY) ? item.itemQuantity : '-' %></td>
+                    <td><%= clientCanSee.includes(clientCanSeeConstant.PRICE) ? '$' + item.itemAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-' %></td>
+                    <td>$<%= totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></td>
+                </tr>
+                <% }) %>
+                </tbody>
+            </table>
+
+            <table class="total_table">
+                <tbody>
+                <tr>
+                    <th>Sub Total</th>
+                    <td>
+                        <%= clientCanSee.includes(clientCanSeeConstant.SUB_TOTAL) ? '$' + data?.subTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-' %>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>After Discount</th>
+                    <td class="success">
+                        <%= clientCanSee.includes(clientCanSeeConstant.DISCOUNT) ? '$' + (data?.subTotal - data.discountAmount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-' %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Shipping Charges</th>
+                    <td>
+                        <%= clientCanSee.includes(clientCanSeeConstant.SHIPPING_CHARGE) ? '$' + data.shippingCharge.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-' %>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th>Taxes (<%= data.taxName || '' %> | <%= data.taxPercentage || 0 %>%)</th> -->
+                    <!-- <th>Taxes (<%= data.taxName || '' %> <%= data.taxName && '|' %> <%= data.taxPercentage || 0 %>%)</th> -->
+
+                    <th>Taxes 
+                        <% if (data.taxName) { %>
+                            (<%= data.taxName %> | <%= data.taxPercentage || 0 %>%)
+                        <% } else { %>
+                        (<%= data.taxPercentage || 0 %>%)
+                        <% } %>
+                    </th>
+                    <td>
+                        $<%= data?.tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || 0 %>
+                    </td>
+                </tr>
+
+                            <tr class="total_row">
+                                <th class="secondary">Total</th>
+                                <td class="total_amount">
+                                    $<%= data.totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || 0 %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+            <footer>
+                <% if (data.termsAndConditions) { %>
+                    <div>
+                        <p class="secondary" style="margin-bottom:4px">Terms and Conditions</p>
+                        <div ><%- data.termsAndConditions %></div>
+                    </div>
+                <% } %>
+                <% if (data.notes) { %>
+                    <div style="margin-top: 20px">
+                        <p class="secondary" style="margin-bottom:4px">Notes</p>
+                        <div ><%- data.notes %></div>
+                    </div>
+                <% } %>
+            </footer>
+        </div>
+    </body>
+</html>

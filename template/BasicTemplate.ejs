@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Basic Template</title>
+        <!--    fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Poppins, Arial, sans-serif;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            p {
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 15px;
+                letter-spacing: 0.4px;
+                color: #515151;
+            }
+            h6 {
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 28px;
+                letter-spacing: 0.15px;
+                color: #515151;
+            }
+            .align_left {
+                text-align: left !important;
+            }
+            .main-content {
+                width: 100%;
+                height: max-content;
+                margin: auto;
+                transition: width 0.3s ease;
+                background-color: #ffffff;
+                padding: 24px 0;
+            }
+            .header-contents {
+                display: flex;
+                -webkit-box-pack: justify;
+                -webkit-justify-content: space-between;
+                justify-content: space-between;
+                align-items: baseline;
+                padding: 0 80px;
+            }
+
+            header h2 {
+                margin: 0;
+                font-weight: 700;
+                font-size: 32px;
+                line-height: 56px;
+                letter-spacing: -0.00833em;
+                color: #515151;
+            }
+            .logo_box {
+                width: 210px;
+                height: 80px;
+            }
+            .logo_box img {
+                width: auto;
+                max-width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            .capitalize_text {
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 18px;
+                letter-spacing: 0.15px;
+                color: #515151;
+                text-transform: capitalize;
+            }
+            .items_table {
+                width: 100%;
+                border-spacing: 0;
+                margin: 24px 0 16px 0;
+            }
+            .items_table th,
+            .items_table td {
+                font-size: 14px;
+                line-height: 1.5rem;
+                letter-spacing: 0.15px;
+                display: table-cell;
+                vertical-align: inherit;
+                text-align: right;
+                padding: 8px;
+                color: #515151;
+                border-bottom: 1px solid rgba(224, 224, 224, 1);
+            }
+            .items_table th {
+                border-radius: 0;
+                background-color: #515151;
+                color: #ffffff;
+                font-weight: 600;
+            }
+            
+            .items_table tbody tr {
+                background-color: rgba(148, 157, 178, 0.12);
+            }
+            .items_table th:first-of-type,
+            .items_table tbody tr td:first-of-type {
+                padding-left: 80px;
+            }
+            .items_table th:last-of-type,
+            .items_table tbody tr td:last-of-type {
+                padding-right: 80px;
+            }
+            .total_table_area{
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                padding-left: 80px;
+            }
+            .total_table_area .invoice_details{
+                font-weight: 600;
+                margin-bottom: 16px;
+            }
+            .total_table {
+                display: table;
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 50%;
+            }
+            .total_table th,
+            .total_table td {
+                padding: 4px 8px;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 1.5rem;
+                letter-spacing: 0.15px;
+                text-align: right;
+            }
+            .total_table th {
+                text-align: right;
+            }
+            .total_table tr td {
+                padding-right: 80px;
+            }
+            footer {
+                padding: 24px 80px;
+                margin-top: 16px;
+                border-top: 1px solid #949db21f;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-content">
+            <header>
+                    <div class="header-contents">
+                        <h2>INVOICE</h2>
+                        <div style="text-align: right">
+                            <% if (data.customLogoUrl) { %>
+                                <div class="logo_box"><img src="<%= data.customLogoUrl %>" alt="logo" /></div>
+                            <% } %>
+                            <% if (contactInfo?.dataValues?.firstName) { %>
+                                <h6><%= contactInfo?.dataValues?.firstName + ' ' + contactInfo?.dataValues?.lastName %></h6>
+                            <% } %>
+                            <% if (contactInfo?.dataValues?.email) { %>
+                                <p style="margin-top:0">
+                                    <a href="mailto: <%= contactInfo.dataValues.email  %>" style="text-decoration: none; color: inherit;"><%= contactInfo?.dataValues?.email  %></a>
+                                </p>
+                            <% } %>
+                            <% if (contactInfo?.dataValues?.number) { %>
+                                <p style="margin-top:0">
+                                    <a href="tel: <%= contactInfo.dataValues.number  %>" style="text-decoration: none; color: inherit;"><%= contactInfo?.dataValues?.number  %></a>
+            
+                                </p>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="header-contents" style="margin-top: 20px">
+                        <div style="width:35%;">
+                           <% if (billTo.address) { %>
+                                <p class="capitalize_text" style="margin-bottom: 10px">BILL TO:</p>
+                                <p><%= billTo.address || '' %> </p>
+                                <% if (billTo.zip || billTo.city || billTo.state || billTo.country) { %>
+                                    <p>
+                                        <% if (billTo.city) { %>
+                                            <%= `${billTo.city},` %>
+                                        <% } %>
+                                        <% if (billTo.state) { %>
+                                            <%= `${billTo.state} ` %>
+                                        <% } %>
+                                        <% if (billTo.zip) { %>
+                                            <%= `${billTo.zip}` %>
+                                        <% } %>
+                                    </p>
+                                    <p style="text-transform: capitalize;"><%= billTo.country || '' %></p>
+                                <% } %>
+                            <% } %>
+                        </div>
+                        <% if (shippingTo.address) { %>
+                            <div style="text-align: right;width:35%;">
+                                <p class="capitalize_text" style="margin-bottom: 10px">SHIP TO:</p>
+                                <p><%= shippingTo.address || '' %> </p>
+                                <% if (shippingTo.zip || shippingTo.city || shippingTo.state || shippingTo.country) { %>
+                                    <p>
+                                        <% if (shippingTo.city) { %>
+                                            <%= `${shippingTo.city},` %>
+                                        <% } %>
+                                        <% if (shippingTo.state) { %>
+                                            <%= `${shippingTo.state} ` %>
+                                        <% } %>
+                                        <% if (shippingTo.zip) { %>
+                                            <%= `${shippingTo.zip}` %>
+                                        <% } %>
+                                    </p>
+                                    <p style="text-transform: capitalize;"><%= shippingTo.country || '' %></p>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    </div>
+            </header>
+
+    <main>
+        <table class="items_table">
+            <thead>
+            <tr>
+                <th class="align_left" style="min-width:300px">Items & Description</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% let subTotal = 0; %>
+            <% let totalTax = 0; %>
+            <% let totalAmount = 0; %>
+            <% itemsData.forEach(function(item, index) { %>
+            <% subTotal += item.itemTotalPrice; %>
+            <% totalAmount = (item.itemQuantity * item.itemAmount) %>
+            <% totalTax = (totalAmount * item.itemTax) / 100; %>
+
+            <tr>
+                <td class="align_left">
+                    <span><%= item.itemName %></span>
+
+                    <% if (item.itemDescription) { %>
+                    <p style="margin-top:0;color:#7c7c7c;"><%= item.itemDescription %></p>
+                    <% } %>
+                </td>
+                <td><%= clientCanSee.includes(clientCanSeeConstant.QUANTITY) ? item.itemQuantity : '-' %></td>
+                <td><%= clientCanSee.includes(clientCanSeeConstant.PRICE) ? '$' + item.itemAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-' %></td>
+                <td>$<%= totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+
+        <div class="total_table_area">
+            <div>
+                <p class="invoice_details">Invoice Details:</p>
+                <p>Invoice No: <%= data.invoiceNumber || '' %></p>
+                <p>Order No: <%= contactData.orderNumber || '' %></p>
+                <p>Invoice Date: <%= data.invoiceDate || '' %></p>
+                <p>Due Date: <%= data.dueDate || '' %></p>
+            </div>
+            <table class="total_table">
+                <tbody>
+                <tr>
+                    <th><p>Sub Total</p></th>
+                    <td class="capitalize_text">
+                        <%= clientCanSee.includes(clientCanSeeConstant.SUB_TOTAL) ? '$' + data?.subTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-' %>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p>After Discount</p></th>
+                    <td class="capitalize_text">
+                        <%= clientCanSee.includes(clientCanSeeConstant.DISCOUNT) ? '$' + (data?.subTotal - data.discountAmount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-' %>
+                    </td>
+                </tr>
+                <tr>
+                    <th><p>Shipping Charges</p></th>
+                    <td class="capitalize_text">
+                        <%= clientCanSee.includes(clientCanSeeConstant.SHIPPING_CHARGE) ? '$' + data.shippingCharge.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '-' %>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th>Taxes (<%= data.taxName || '' %> | <%= data.taxPercentage || 0 %>%)</th> -->
+                    <th>Taxes 
+                        <% if (data.taxName) { %>
+                            (<%= data.taxName %> | <%= data.taxPercentage || 0 %>%)
+                        <% } else { %>
+                        (<%= data.taxPercentage || 0 %>%)
+                        <% } %>
+                    </th>
+
+                    <td class="capitalize_text">
+                        $<%= data?.tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || 0 %>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th style="font-weight: 600;">Total</th>
+                    <td class="capitalize_text">$<%= data.totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || 0 %></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+            <footer>
+                    <!-- <div>
+                        <p class="capitalize_text">Payment Info</p>
+                        <p>Account: #987654876</p>
+                        <p>A/c Name: Lorem ipsum</p>
+                        <p>Bank Details: Add your Bank</p>
+                    </div> -->
+
+                    <% if (data.termsAndConditions) { %>
+                        <div >
+                            <p class="capitalize_text">TERMS & CONDITION</p>
+                            <div><%- data.termsAndConditions %></div>
+                        </div>
+                    <% } %>
+                    <% if (data.notes) { %>
+                        <div style="margin-top: 32px">
+                            <p class="capitalize_text">NOTES</p>
+                            <div><%- data.notes %></div>
+                        </div>
+                    <% } %>
+            </footer>
+        </div>
+    </body>
+</html>
