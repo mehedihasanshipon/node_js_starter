@@ -1,74 +1,45 @@
 version: '2.0'
 
 services:
-    solid-boilerplate:
-        image: node:18-alpine
-        container_name: solid-boilerplate
-        restart: unless-stopped
-        ports:
-            - 5088:5088
-        volumes:
-            - UPDATE_PATH:/app
-        working_dir: /app
-        command: sh -c "yarn install &&  yarn start:dev"
+  starter-boilerplate:
+    container_name: starter-boilerplate
+    restart: unless-stopped
+    ports:
+      - 6088:6088
+    volumes:
+      - /home/orangetoolz/orangetoolz/node/node_starter:/app
+    working_dir: /app
+    command: sh -c "yarn install &&  yarn start:dev"
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    cap_add:
+        - ALL
+    user: root
 
-    solid-boilerplate-postgres:
-        image: postgres:14
-        container_name: solid-boilerplate-postgres
-        restart: always
-        mem_limit: 1g
-        environment:
-            POSTGRES_PASSWORD: root123
-            POSTGRES_DB: solid-boilerplate-postgres
-            POSTGRES_USER: root
-        volumes:
-            - UPDATE_PATH:/var/lib/postgresql/data
+  starter-boilerplate-mysql:
+    image: mysql:8.0
+    container_name: starter-boilerplate-mysql
+    mem_limit: 1g
+    volumes:
+      - /home/orangetoolz/orangetoolz/node/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+    restart: unless-stopped
 
-    solid-boilerplate-mysql:
-        image: mysql:5.7
-        container_name: solid-boilerplate-mysql
-        mem_limit: 1g
-        volumes:
-            - UPDATE_PATH:/var/lib/mysql
-        environment:
-            - MYSQL_ROOT_PASSWORD=root123
-        restart: unless-stopped
+  starter-boilerplate-mysql-adminer:
+    image: adminer
+    container_name: starter-boilerplate-mysql-adminer
+    links:
+      - starter-boilerplate-mysql:db-mysql
+    ports:
+      - 6988:8080
 
-    solid-boilerplate-db-adminer:
-        image: adminer
-        container_name: solid-boilerplate-db-adminer
-        links:
-            - solid-boilerplate-postgres:db-postgres
-            - solid-boilerplate-mysql:db-mysql
-        ports:
-            - 9888:8080
+  starter-boilerplate-redis:
+    image: redis:6.2
+    container_name: starter-boilerplate-redis
+    restart: unless-stopped
+    volumes:
+      - /home/orangetoolz/orangetoolz/node/redis:/data
 
-    solid-boilerplate-redis:
-        image: redis:6.2
-        container_name: solid-boilerplate-redis
-        restart: unless-stopped
-        volumes:
-            - UPDATE_PATH:/data
-
-    solid-boilerplate-mongo:
-        image: mongo
-        container_name: solid-boilerplate-mongo
-        restart: always
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: root123
-        volumes:
-            - UPDATE_PATH:/data/db
-
-    mongo-express:
-        image: mongo-express
-        container_name: solid-boilerplate-mongo-express
-        restart: always
-        ports:
-            - 9881:8081
-        environment:
-            ME_CONFIG_MONGODB_ADMINUSERNAME: root
-            ME_CONFIG_MONGODB_ADMINPASSWORD: root123
-            ME_CONFIG_MONGODB_URL: mongodb://root:root123@solid-boilerplate-mongo:27017/
-            
 # End of Solid Boilerplate application configuration
